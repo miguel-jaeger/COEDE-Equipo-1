@@ -23,6 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Llamamos a la función para cada sección
-    cargarContenido('pages/jaeger.html', 'presentacion');
+    cargarContenido('pages/jaeger.html', 'STTE_Peraldo');
+    cargarContenido('pages/jaeger.html', 'STTE_Anco');
+    cargarContenido('pages/jaeger.html', 'STTE_Letona');
+    cargarContenido('pages/jaeger.html', 'STTE_Lazo');
+   
 
 });
