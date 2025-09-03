@@ -23,10 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Llamamos a la función para cada sección
-    cargarContenido('pages/Peraldo.html', 'STTE_Peraldo');
-    cargarContenido('pages/Anco.html', 'STTE_Anco');
-    cargarContenido('pages/Letona.html', 'STTE_Letona');
-    cargarContenido('pages/Lazo.html', 'STTE_Lazo');
+    cargarContenido('pages/peraldo.html', 'estPeraldo');
+    cargarContenido('pages/anco.html', 'estAnco');
+    cargarContenido('pages/letona.html', 'estLetona');
+    cargarContenido('pages/lazo.html', 'estLazo');
    
 
 });
