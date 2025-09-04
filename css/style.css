@@ -11,9 +11,7 @@ body {
   background: #f9f9f9;
   color: #333;
   background-image: url('../img/fondo.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+
 }
 
 header {
@@ -21,8 +19,32 @@ header {
   color: #fff;
   text-align: center;
   padding: 1.5rem;
- 
-  
+  background-position: left center, center center;
+  background-size: auto 100%, cover;
+  background-repeat: no-repeat, no-repeat;
+
+
+}
+
+.logo {
+  background: url(../img/operfondo.png);
+  z-index: 100000;
+  width: 162px;
+  height: 138px;
+  background-size: 145px;
+  margin: -78px 0 0 0;
+  background-repeat: no-repeat;
+  float: left;
+}
+.logo1 {
+  background: url(../img/operfondo.png);
+  z-index: 100000;
+  width: 162px;
+  height: 138px;
+  background-size: 145px;
+  margin: -138px 0 0 0;
+  background-repeat: no-repeat;
+  float: right;
 }
 
 header h1 {
@@ -61,7 +83,7 @@ main {
 .card {
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -72,6 +94,7 @@ main {
   margin: 0 auto;
   display: block;
 }
+
 .card h2 {
   margin: 1rem;
   font-size: 1.5rem;
@@ -84,7 +107,7 @@ main {
 
 .card:hover {
   transform: scale(1.05);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
 
 .btn {
