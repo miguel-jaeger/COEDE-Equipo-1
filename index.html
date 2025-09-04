@@ -5,7 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog Equipo 01</title>
   <link rel="stylesheet" href="css/style.css">
-  <script src="js/script.js" defer></script>
+  <style>
+    .contenido-extra {
+      display: none;
+      margin: 20px auto;
+      padding: 15px;
+      max-width: 800px;
+      background: #f0f0f0;
+      border-radius: 10px;
+    }
+    .btn {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      background: #007bff; /* Azul */
+      color: white;
+      cursor: pointer;
+      transition: background 0.4s ease; /* Animación suave */
+    }
+    .btn:hover {
+      background: #0056b3; /* Azul más oscuro en hover */
+    }
+    .btn.activo {
+      background: #28a745; /* Verde cuando está en "Ocultar" */
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -26,34 +50,85 @@
         <img src="https://i.ibb.co/rGtzHv6S/Whats-App-Image-2025-09-04-at-9-22-57-AM.jpg" alt="Foto ANCO">
         <h2>Estudiante ANCO</h2>
         <p>Apasionado por la tecnología, programación y la innovación digital.</p>
-        <button class="btn"  data-url="/pages/anco.html">Leer más</button>
+        <button class="btn" data-url="pages/anco.html">Leer más</button>
       </article>
 
       <article id="estPeraldo" class="card">
         <img src="https://i.ibb.co/9mMhtrdK/Whats-App-Image-2025-09-04-at-9-04-40-AM.jpg" alt="Foto PERALDO">
         <h2>Estudiante PERALDO</h2>
         <p>Amante del diseño web, creatividad y desarrollo frontend.</p>
-        <button class="btn"  data-url="/pages/peraldo.html">Leer más</button>
+        <button class="btn" data-url="pages/peraldo.html">Leer más</button>
       </article>
 
       <article id="estLetona" class="card">
         <img src="https://i.ibb.co/Jwt81xpt/imagen.png" alt="Foto LETONA">
         <h2>Estudiante LETONA</h2>
         <p>Fan de la ciberseguridad y el aprendizaje continuo.</p>
-        <button class="btn" data-url="/pages/letona.html">Leer más</button>
+        <button class="btn" data-url="pages/letona.html">Leer más</button>
       </article>
 
       <article id="estLazo" class="card">
         <img src="https://i.ibb.co/bjGybYR0/Whats-App-Image-2025-09-04-at-9-04-11-AM.jpg" alt="Foto LAZO">
         <h2>Estudiante LAZO</h2>
         <p>Apasionado por la inteligencia artificial y el futuro digital.</p>
-        <button class="btn"  data-url="/pages/lazo.html">Leer más</button>
+        <button class="btn" data-url="pages/lazo.html">Leer más</button>
       </article>
     </section>
+
+    <!-- Contenedor donde aparece el contenido extra -->
+    <div id="extra" class="contenido-extra"></div>
   </main>
 
   <footer>
     &copy; 2025 Equipo 01 | Todos los derechos reservados.
   </footer>
+
+  <script>
+    const botones = document.querySelectorAll(".btn");
+    const extra = document.getElementById("extra");
+    let contenidoActual = null;
+    let botonActivo = null;
+
+    botones.forEach(boton => {
+      boton.addEventListener("click", () => {
+        const url = boton.getAttribute("data-url");
+
+        if (extra.style.display === "block" && contenidoActual === url) {
+          // Si ya está abierto el mismo → lo oculta
+          extra.style.display = "none";
+          extra.innerHTML = "";
+          contenidoActual = null;
+          boton.textContent = "Leer más";
+          boton.classList.remove("activo");
+          botonActivo = null;
+        } else {
+          // Cargar contenido desde archivo externo
+          fetch(url)
+            .then(response => response.text())
+            .then(data => {
+              extra.innerHTML = data;
+              extra.style.display = "block";
+              extra.scrollIntoView({ behavior: "smooth" });
+
+              // Resetear botón anterior
+              if (botonActivo && botonActivo !== boton) {
+                botonActivo.textContent = "Leer más";
+                botonActivo.classList.remove("activo");
+              }
+
+              // Cambiar solo el botón actual
+              boton.textContent = "Ocultar";
+              boton.classList.add("activo");
+              contenidoActual = url;
+              botonActivo = boton;
+            })
+            .catch(error => {
+              extra.innerHTML = "<p style='color:red;'>Error al cargar el contenido.</p>";
+              console.error(error);
+            });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
